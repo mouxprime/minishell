@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   design.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmenard <jmenard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mianni <mianni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 14:13:05 by jmenard           #+#    #+#             */
-/*   Updated: 2024/11/13 18:12:19 by jmenard          ###   ########.fr       */
+/*   Updated: 2025/05/22 10:53:34 by mianni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	print_animation(void)
 	print_art();
 	usleep(10000);
 	print_with_delay("\033[3m\t\tA 42project, by ");
-	print_with_delay("\033[1;31mJmenard\033[0m");
+	print_with_delay("\033[1;31mjmenard\033[0m");
 	print_with_delay("\033[3m & \033[0m");
-	print_with_delay("\033[1;31mMianni\033[0m\n\n");
+	print_with_delay("\033[1;31mmianni\033[0m\n\n");
 }
 
 char	*find_cwd(void)
@@ -99,9 +99,11 @@ char	*print_prompt(void)
 		return (readline("\033[1mminishell-> \033[0m"));
 	else
 	{
-		name = ft_strnstr(env, "made", ft_strlen(env));
-		while (name[i] != '.')
+		name = ft_strnstr(env, "f", ft_strlen(env));
+		while (name[i] && name[i] != '.' )
 			i++;
+		if (!name[i])
+			return (readline("\033[1mminishell-> \033[0m"));
 		name_bis = ft_substr(name, 0, i, 0);
 		name_bis = ft_strjoin("\001\033[1;37m\002", name_bis);
 		name_bis = ft_strjoin(name_bis, "\001\033[0m\002");
